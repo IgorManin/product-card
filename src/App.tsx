@@ -10,10 +10,12 @@ function App() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getProducts().then((data) => {
-            setProducts(data);
-            setIsLoading(false);
-        });
+        const fetchData = async () => {
+            const data = await getProducts()
+            setProducts(data)
+            setIsLoading(false)
+        }
+        fetchData()
     }, []);
 
     return (
